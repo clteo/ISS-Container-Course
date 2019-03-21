@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Pod  
+
+metadata:
+    name: myapp-pod 
+    namespace: myspace
+    labels:
+        name: myapp-pod 
+
+spec:
+    containers:
+    -name: mypp-container
+    image: stackupiss/northwind-app:apps/v1
+    imagePullPolicy: IfNotPresent
+    ports:
+    -contanerPort: 3000
+    env:
+    - name: DB_HOST
+      value: some_host
+

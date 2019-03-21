@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+    name: db-Deployment
+    namespace: myspace
+    labels:
+        name: db-deploy
+
+spec:
+    #number of instances
+    replicas: 1
+    selector:
+        matchLabels:
+            name: mydb-pod 
+
+    template:
+        #the pod that i am going to deploy
+        metadata:
+            name: mydb-pod
+            labels:
+                name: mydb-pod  
+        spec:
+            containers:
+            - name: mydb-container
+            image: stackupiss/northwind-db:v1
+            imagePullPolicy: IfNotPresent
+            ports:
+            - containerPort: 3306
+        
+
+    
