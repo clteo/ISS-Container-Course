@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name:  weatherappdr1 
+  namespace: default
+spec:
+  host: weatherappsvc 
+  subsets:
+  - labels:
+      app: weatherapp
+      version: v1
+    name: version-1
+  
